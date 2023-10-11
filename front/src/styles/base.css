@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Rum+Raisin&family=Source+Sans+3:wght@400;900&display=swap');
+
+html {
+    --scroll-behavior: smooth;
+    scroll-behavior: smooth;
+}
+
+#carticon a {
+    text-decoration: none;
+}
+
+#carticon span {
+    background-color: #ee7f43bd;
+    color: #fff;
+    padding: 8px;
+    font-size: 130%;
+    border-radius: 100%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: -30px;
+    left: -30px;
+}

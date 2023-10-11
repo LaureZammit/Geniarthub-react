@@ -1,0 +1,29 @@
+header {
+    background-color: black;
+    height:125px;
+    display: flex;
+    align-items: center;
+}
+.page header {
+    background-color: #fff;
+    margin: auto;
+    max-width: 1440px;
+    height:auto;
+    margin:41px auto 80px auto;
+   
+}
+.page header div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.page header div {
+    position:relative;
+    width: 100%;
+}
+.page header a:nth-child(2) {
+    position:absolute;
+    top:50%;
+    right:0;
+}
