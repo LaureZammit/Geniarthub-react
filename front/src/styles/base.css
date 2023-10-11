@@ -24,3 +24,7 @@ html {
     top: -30px;
     left: -30px;
 }
+
+dialog h2 {
+    text-align: center;
+}

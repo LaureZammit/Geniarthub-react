@@ -10,7 +10,6 @@ header {
     max-width: 1440px;
     height:auto;
     margin:41px auto 80px auto;
-   
 }
 .page header div {
     display: flex;
@@ -26,4 +25,10 @@ header {
     position:absolute;
     top:50%;
     right:0;
+}
+
+.row {
+    max-width: 1440px;
+    margin:auto;
+    width: 100%;
 }
