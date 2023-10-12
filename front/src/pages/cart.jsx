@@ -5,6 +5,8 @@ import '../styles/base.css'
 import '../styles/cart.css'
 
 function Cart() {
+    document.body.classList.add('page')
+    
     return(
         <>
             <Header />
