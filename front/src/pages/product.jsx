@@ -16,6 +16,7 @@ function Product() {
     const [quantity, setQuantity] = useState(1);
     const [selectedFormat, setSelectedFormat] = useState("");
     const [displayedPrice, setDisplayedPrice] = useState("");
+    const [cart, setCart] = useState([]);
 
     useEffect(() => {
         fetch(`http://localhost:3000/api/products/${id}`)
@@ -41,7 +42,7 @@ function Product() {
     };
 
     const handleAddToCart = () => {
-        if (quantity >= 1 && selectedFormat && <= 100) {
+        if (quantity >= 1 && selectedFormat && quantity <= 100) {
             const produit = {
                 id: data._id,
                 titre: data.titre,
@@ -50,6 +51,10 @@ function Product() {
                 format: selectedFormat,
                 prix: displayedPrice,
             };
+
+            const updatedCart = [...cart, produit];
+
+            setCart(updatedCart);
 
         } else {
             alert("Veuillez sélectionner une quantité et un format valide.");

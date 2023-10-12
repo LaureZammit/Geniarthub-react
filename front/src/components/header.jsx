@@ -4,6 +4,7 @@ import logoblack from "/img/logo-black.png";
 import imgcart from "/img/cart.svg";
 
 import '../styles/header.css'
+import '../styles/cart.css'
 
 export function Header() {
     return (
