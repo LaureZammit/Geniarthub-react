@@ -41,7 +41,7 @@ function Product() {
     };
 
     const handleAddToCart = () => {
-        if (quantity >= 1 && selectedFormat) {
+        if (quantity >= 1 && selectedFormat && <= 100) {
             const produit = {
                 id: data._id,
                 titre: data.titre,
@@ -52,7 +52,7 @@ function Product() {
             };
 
         } else {
-            alert("Veuillez sélectionner une quantité et un format valides.");
+            alert("Veuillez sélectionner une quantité et un format valide.");
         }
     }
 
@@ -97,7 +97,11 @@ function Product() {
                                     ))}
                             </select>
                         </div>
-                        <Link className="button-buy" href="#">Buy {data.shorttitle}</Link>
+                        <Link 
+                            className="button-buy" 
+                            onClick={handleAddToCart}>
+                                Buy {data.shorttitle}
+                        </Link>
                     </div>
                 </article>
 
@@ -106,7 +110,6 @@ function Product() {
                     <p className="description"></p>
                 </aside>               
             </section>
-
             <Footer />
         </>
     )

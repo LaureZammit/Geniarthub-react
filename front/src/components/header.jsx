@@ -9,10 +9,10 @@ export function Header() {
     return (
         <header>
             <div>
-                <Link href="index.html">
+                <Link to="/">
                     <img src={logoblack} alt="Logo GeniArtHub version sombre" />
                 </Link>
-                <Link id="carticon" href="cart.jsx">
+                <Link id="carticon" to="/cart">
                     <img src={imgcart} alt="Aller au panier" />
                 </Link>
             </div>
