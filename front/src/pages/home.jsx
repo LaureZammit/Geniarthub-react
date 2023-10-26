@@ -11,11 +11,14 @@ import imgcart from "/img/cart.svg";
 import '../styles/base.css'
 import '../styles/header.css'
 import '../styles/home.css'
+import { useCart } from '../components/cartcontext';
 
 
 function Home() {
 
     document.body.classList.remove('page')
+
+    const { getTotalQuantity } = useCart();
 
     // CARD
     const [datas, setDatas] = useState([]);
@@ -33,7 +36,7 @@ function Home() {
         <>
             <header>
                 <div className="row">
-                    <Link href={Home}>
+                    <Link to={Home}>
                         <img src={logowhite} alt="Logo du site GeniArtHub" />
                     </Link>
                 </div>
@@ -49,7 +52,9 @@ function Home() {
             <section id="aiartshop" className="productlist">
                 <div>
                     <img src={logoblack} alt="Logo GeniArtHub version sombre" />
-                    <Link id="carticon" to="cart.jsx"><img src={imgcart} alt="Aller au panier" /></Link>
+                    <Link id="carticon" to="/cart"><img src={imgcart} alt="Aller au panier" />
+                        <span>{getTotalQuantity()}</span>
+                    </Link>
                 </div>
 
                 <section className="products">

@@ -1,5 +1,6 @@
 import { Link, useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
+import { useCart } from "../components/cartcontext"
 
 import { Footer } from "../components/footer"
 import { Header } from "../components/header"
@@ -16,7 +17,9 @@ function Product() {
     const [quantity, setQuantity] = useState(1);
     const [selectedFormat, setSelectedFormat] = useState("");
     const [displayedPrice, setDisplayedPrice] = useState("");
-    const [cart, setCart] = useState([]);
+    
+    // const {cart, setCartUpdate} = useCart([]);
+    const {cart, setCart} = useCart();
 
     useEffect(() => {
         fetch(`http://localhost:3000/api/products/${id}`)
@@ -41,21 +44,26 @@ function Product() {
         }
     };
 
-    const handleAddToCart = () => {
+    const handleAddToCart = (e) => {
+        e.preventDefault();
+        // const quantity = document.querySelector("#quantity").value;
+        const selectedQuantity = parseInt(quantity, 10); // 10 est la base de numération
+        setQuantity(selectedQuantity);
+
+        // const format = document.querySelector("#format").selectedOptions[0].value;
+        const format = selectedFormat;
+
         if (quantity >= 1 && selectedFormat && quantity <= 100) {
-            const produit = {
-                id: data._id,
+            const productToAdd = {
+                id,
+                format,
+                quantity: selectedQuantity, 
+                displayedPrice,
                 titre: data.titre,
-                image: data.image,
-                quantite: parseInt(quantity),
-                format: selectedFormat,
-                prix: displayedPrice,
+                image: data.image
             };
 
-            const updatedCart = [...cart, produit];
-
-            setCart(updatedCart);
-
+            setCart([...cart, productToAdd]);
         } else {
             alert("Veuillez sélectionner une quantité et un format valide.");
         }
@@ -70,11 +78,11 @@ function Product() {
                     <figure> 
                         <img 
                             id="image-oeuvre" 
-                            src={data.image} 
-                            alt={data.titre} />
+                            src={data?.image} 
+                            alt={data?.titre} />
                     </figure>
                     <div>
-                        <h1>{data.titre}</h1>
+                        <h1>{data?.titre}</h1>
                         <p id="little-paragraphe">
                             {data?.description?.substring(0, 200) + "..."}
                         </p>
@@ -97,7 +105,7 @@ function Product() {
                                 name="format" 
                                 id="format" 
                                 onChange={handleFormatChange}>
-                                    {data.declinaisons && data.declinaisons.map((el, index) => (
+                                    {data?.declinaisons && data?.declinaisons.map((el, index) => (
                                         <option key={index} value={el.taille}>Format : {el.taille}</option>
                                     ))}
                             </select>
